@@ -4,8 +4,8 @@ A powerful sqlite code generator for android .
 # Introduce
 This repository is a code genarator for Android . By using it, you can generate java codes to read/write sqlite
  * This is a standard java application.
- * Developed language: Java
- * Develop IDE: IntelliJ_v15.0.2
+ * Dev language: Java
+ * Dev IDE: IntelliJ_v15.0.2
 
 # Features
 * Generate read/write java codes from an existing database file
