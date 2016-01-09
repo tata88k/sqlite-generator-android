@@ -1,2 +1,2 @@
 # SQLiteCodeGenerator-android
-This is a powerful sqlite code generator for android . 
+A powerful sqlite read/write code generator for android . 
