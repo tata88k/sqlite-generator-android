@@ -1,5 +1,5 @@
 # SQLiteCodeGenerator-android
-A powerful sqlite read/write code generator for android .
+A powerful sqlite code generator for android .
 
 # Introduce
 This repository is a code genarator for Android . By using it, you can generate java codes to read/write sqlite
