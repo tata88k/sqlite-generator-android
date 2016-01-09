@@ -8,10 +8,10 @@ This repository is a code genarator for Android . By using it, you can generate 
  * Dev IDE: IntelliJ_v15.0.2
 
 # Features
-* Generate read/write java codes from an existing database file
-* Support tables and data views
-* Base on SQLiteOpenHelper and 100% support any SQL statement
-* Generated codes are light,simple,expandable and pluggable
+* Generate map objects(tables and data views) from an existing sqlite file
+* Generate API to read/write sqlite (insert,update,delete,query and so on)
+* API based on SQLiteOpenHelper and 100% support any SQL statement
+* API is super light , expandable and pluggable
 * Code quantity is less 40% than GreedDao
 
 # Usage
