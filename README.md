@@ -1,5 +1,6 @@
 # SQLiteCodeGenerator-android
 A powerful sqlite code generator for android .
+<p>
 ![](https://github.com/ThePacific/SQLiteCodeGenerator-android/blob/master/SQLiteGenerator/gif/guide.gif)
 
 # Introduce
