@@ -114,7 +114,7 @@ public class ${api.dataAccessClassName} {
      */
     public <T extends SuperModel> boolean insert(T model) {
         Object[] objects = model.getInsertSql();
-        return execSQL(objects[0].toString(), Arrays.copyOfRange(objects, 1, objects.length - 1));
+        return execSQL(objects[0].toString(), Arrays.copyOfRange(objects, 1, objects.length));
     }
 
     /**
@@ -122,7 +122,7 @@ public class ${api.dataAccessClassName} {
      */
     public <T extends SuperModel> boolean delete(T model) {
         Object[] objects = model.getDeleteSql();
-        return execSQL(objects[0].toString(), Arrays.copyOfRange(objects, 1, objects.length - 1));
+        return execSQL(objects[0].toString(), Arrays.copyOfRange(objects, 1, objects.length));
     }
 
     /**
@@ -130,7 +130,7 @@ public class ${api.dataAccessClassName} {
      */
     public <T extends SuperModel> boolean update(T model) {
         Object[] objects = model.getUpdateSql();
-        return execSQL(objects[0].toString(), Arrays.copyOfRange(objects, 1, objects.length - 1));
+        return execSQL(objects[0].toString(), Arrays.copyOfRange(objects, 1, objects.length));
     }
 
     /**
