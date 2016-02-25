@@ -19,7 +19,7 @@ This repository is a code genarator for Android . By using it, you can generate 
 * Generate API to read/write sqlite (insert,update,delete,query and so on)
 * API based on SQLiteOpenHelper and 100% support any SQL statement
 * API is super light , expandable and pluggable
-* Code quantity is less 40% than GreedDao
+* Code quantity is less 60% than GreedDao
 
 # Usage
 * Clone the whole project from github
