@@ -10,10 +10,8 @@ package ${api.javaPackage};
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteTransactionListener;
-import android.util.Log;
 
 import ${api.modelJavaPackage+"."+api.superModelClassName};
 
@@ -24,10 +22,9 @@ import java.util.List;
 public class ${api.dataAccessClassName} {
 
     private ${api.dbOpenHelperClassName} dbOpenHelper;
-    private final String tag = "${api.dataAccessClassName}";
 
     /**
-     * When you need to create a database file in sdcard, please use DBContext.
+     * If you need to create a database file in sdcard, please use DBContext.
      */
     public ${api.dataAccessClassName}(Context context, String name, int version) {
         this(context, name, null, version);
@@ -42,37 +39,19 @@ public class ${api.dataAccessClassName} {
     }
 
     /**
-     * @param model Just new an empty for table name.
-     * @param where query condition,null for without "where"
+     * @param cls   Type of Class.
+     * @param where Query condition, <usage> "where name=?"</usage>
+     * @param args  Query params, <usage> new String[]{"UsherBaby"}</usage>
      */
-    public <T extends SuperModel> boolean isExit(T model, String where) {
-        StringBuffer buffer = new StringBuffer("select * from ");
-        buffer.append(model.getTableName());
-        if (where != null && where.length() > 0) {
-            buffer.append(" ");
-            buffer.append(where);
-        }
-        buffer.append(" limit 0,1;");
-        Cursor cursor = rawQuery(buffer.toString(), null);
-        if (cursor != null && cursor.getCount() > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @param model Just new an empty for table name.
-     * @param where query condition,null for without "where"
-     */
-    public <T extends SuperModel> long getCount(T model, String where) {
+    public <T extends SuperModel> int getCount(Class<T> cls, String where, String[] args) {
         StringBuffer buffer = new StringBuffer("select count(*) from ");
-        buffer.append(model.getTableName());
+        buffer.append(getTableName(cls));
         if (where != null && where.length() > 0) {
             buffer.append(" ");
             buffer.append(where);
         }
         buffer.append(";");
-        Cursor cursor = rawQuery(buffer.toString(), null);
+        Cursor cursor = rawQuery(buffer.toString(), args);
         if (cursor != null && cursor.moveToFirst()) {
             return cursor.getInt(0);
         }
@@ -80,33 +59,35 @@ public class ${api.dataAccessClassName} {
     }
 
     /**
-     * @param model Just new an empty for table name.
-     * @param where query condition,null for without "where"
+     * @param cls   Type of Class.
+     * @param where Query condition, <usage> "where name=?"</usage>
+     * @param args  Query params, <usage> new String[]{"UsherBaby"}</usage>
      */
-    public <T extends SuperModel> List<T> getAll(T model, String where) {
+    public <T extends SuperModel> List<T> load(Class<T> cls, String where, String[] args) {
         StringBuffer buffer = new StringBuffer("select * from ");
-        buffer.append(model.getTableName());
+        buffer.append(getTableName(cls));
         if (where != null && where.length() > 0) {
             buffer.append(" ");
             buffer.append(where);
         }
         buffer.append(";");
-        return query(model, buffer.toString(), null);
+        return query(cls, buffer.toString(), args);
     }
 
     /**
-     * @param model Just new an empty for table name.
-     * @param where query condition,null for without "where"
+     * @param cls   Type of Class.
+     * @param where Query condition, <usage> "where name=?"</usage>
+     * @param args  Query params, <usage> new String[]{"UsherBaby"}</usage>
      */
-    public <T extends SuperModel> boolean deleteAll(T model, String where) {
+    public <T extends SuperModel> boolean clear(Class<T> cls, String where, String[] args) {
         StringBuffer buffer = new StringBuffer("delete from ");
-        buffer.append(model.getTableName());
+        buffer.append(getTableName(cls));
         if (where != null && where.length() > 0) {
             buffer.append(" ");
             buffer.append(where);
         }
         buffer.append(";");
-        return execSQL(buffer.toString(), null);
+        return execSQL(buffer.toString(), args);
     }
 
     /**
@@ -136,17 +117,17 @@ public class ${api.dataAccessClassName} {
     /**
      * Query models.
      */
-    public <T extends SuperModel> List<T> query(T obj, String sql, String[] selectionArgs) {
+    public <T extends SuperModel> List<T> query(Class<T> cls, String sql, String[] selectionArgs) {
         Cursor cursor = rawQuery(sql, selectionArgs);
         if (cursor != null && cursor.moveToFirst()) {
             List<T> list = new ArrayList<>();
             do {
                 try {
-                    T model = (T) obj.getClass().newInstance();
+                    T model = cls.newInstance();
                     model.initValues(cursor);
                     list.add(model);
                 } catch (Exception e) {
-                    Log.e(tag, e.toString());
+                    throw new RuntimeException(e);
                 }
             } while (cursor.moveToNext());
             return list;
@@ -155,32 +136,22 @@ public class ${api.dataAccessClassName} {
     }
 
     /**
-     * execute a SQL statement,usually for insert,delete,update,create,drop
+     * Execute a SQL statement,usually for insert,delete,update,create,drop
      */
     public boolean execSQL(String sql, Object[] selectionArgs) {
-        try {
-            dbOpenHelper.getWritableDatabase().execSQL(sql, selectionArgs);
-            return true;
-        } catch (SQLException e) {
-            Log.e(tag, e.toString());
-            return false;
-        }
+        dbOpenHelper.getWritableDatabase().execSQL(sql, selectionArgs);
+        return true;
     }
 
     /**
-     * execute a SQL statement,usually for query only
+     * Execute a SQL statement,usually for query only
      */
     public Cursor rawQuery(String sql, String[] selectionArgs) {
-        try {
-            return dbOpenHelper.getReadableDatabase().rawQuery(sql, selectionArgs);
-        } catch (SQLException e) {
-            Log.e(tag, e.toString());
-            return null;
-        }
+        return dbOpenHelper.getReadableDatabase().rawQuery(sql, selectionArgs);
     }
 
     /**
-     * close the database connection,and release resource
+     * Close the database connection,and release resource
      */
     public void release() {
         dbOpenHelper.close();
@@ -188,51 +159,42 @@ public class ${api.dataAccessClassName} {
     }
 
     /**
-     * begin a transaction
+     * Begin a transaction
      */
-    public void beginTransaction() {
-        dbOpenHelper.getWritableDatabase().beginTransaction();
+    public void beginTransaction(SQLiteTransactionListener transactionListener, boolean exclusive) {
+        if (exclusive) {
+            dbOpenHelper.getWritableDatabase().beginTransactionWithListener(transactionListener);
+        } else {
+            dbOpenHelper.getWritableDatabase().beginTransactionWithListenerNonExclusive(transactionListener);
+        }
     }
 
     /**
-     * end a transaction
-     */
-    public void endTransaction() {
-        dbOpenHelper.getWritableDatabase().endTransaction();
-    }
-
-    /**
-     * set transaction successful state
-     */
-    public void setTransactionSuccessful() {
-        dbOpenHelper.getReadableDatabase().setTransactionSuccessful();
-    }
-
-    /**
-     * return if the in transaction
+     * Returns true if the current thread has a transaction pending.
      */
     public boolean inTransaction() {
         return dbOpenHelper.getWritableDatabase().inTransaction();
     }
 
     /**
-     * begin a transaction
+     * Set transaction successful state
      */
-    public void beginTransactionNonExclusive() {
-        dbOpenHelper.getWritableDatabase().beginTransactionNonExclusive();
+    public void setTransactionSuccessful() {
+        dbOpenHelper.getReadableDatabase().setTransactionSuccessful();
     }
 
     /**
-     * begin a transaction
+     * End a transaction
      */
-    public void beginTransactionNonExclusive(SQLiteTransactionListener transactionListener) {
-        dbOpenHelper.getWritableDatabase().beginTransactionWithListenerNonExclusive(transactionListener);
+    public void endTransaction() {
+        dbOpenHelper.getWritableDatabase().endTransaction();
     }
 
-    /**
-     * begin a transaction
-     */
-    public void beginTransaction(SQLiteTransactionListener transactionListener) {
-        dbOpenHelper.getWritableDatabase().beginTransactionWithListener(transactionListener);
+    protected <T extends SuperModel> String getTableName(Class<T> cls) {
+        try {
+            return cls.newInstance().getTableName();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
