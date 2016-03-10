@@ -23,6 +23,7 @@ public class Generator {
     private String modelPackage;
     private String apiPackage;
     private String outDir;
+    private String targetDB;
     private TypeMap typeMap;
     private Configuration config;
     private CodeStyle tableNameCodeStyle;
@@ -50,7 +51,7 @@ public class Generator {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Unix.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:" + targetDB);
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String getTableNameSql = "select name from sqlite_master where type='view'";
@@ -127,7 +128,7 @@ public class Generator {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Unix.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:" + targetDB);
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String getTableNameSql = "select name from sqlite_master where type='table' and name!='sqlite_sequence'";
@@ -213,7 +214,7 @@ public class Generator {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Unix.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:" + targetDB);
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String getTableNameSql = "select name,sql from sqlite_master where type='table' and name!='sqlite_sequence'";
@@ -378,5 +379,9 @@ public class Generator {
 
     public void setModelPackage(String modelPackage) {
         this.modelPackage = modelPackage;
+    }
+
+    public void setTargetDB(String targetDB) {
+        this.targetDB = targetDB;
     }
 }

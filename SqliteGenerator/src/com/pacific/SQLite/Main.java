@@ -4,19 +4,21 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //target database
+        final String targetDB = "Unix.db";
         //model package
         final String modelPackage = "com.example.ipad.unix.model";
-
         //api package
         final String apiPackage = "com.example.ipad.unix.db";
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Generator generator = new Generator();
                 generator.setOutDir("./gen-src");
+                generator.setTargetDB(targetDB);
                 generator.setModelPackage(modelPackage);
                 generator.setApiPackage(apiPackage);
-
                 //tables and views name format
                 generator.setTableNameCodeStyle(CodeStyle.Camel);
 
