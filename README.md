@@ -23,7 +23,7 @@ This repository is a code genarator for Android . By using it, you can generate 
 * Set your own models package, api package ,table name format,and the target directory
 * Run the project, and you will see the whole generated codes in the target directory
 
-* PS: I design my sqlite database file on SQLiteStudio and generate code with SQLiteCodeGenerator-android
+PS: I design my sqlite database file on SQLiteStudio and generate code with SQLiteCodeGenerator-android
 
 # Limit
 * Currently , you must set a named "id" column as the table primary key.
