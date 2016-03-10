@@ -1,5 +1,5 @@
 # SQLiteCodeGenerator-android
-A powerful sqlite code generator for android .
+A powerful sqlite code generator from sqlite database file for android .
 <p>
 guide:
 <p>
