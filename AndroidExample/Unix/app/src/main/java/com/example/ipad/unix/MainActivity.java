@@ -1,43 +1,28 @@
 package com.example.ipad.unix;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.example.ipad.unix.db.DataAccessProxy;
-import com.example.ipad.unix.db.Strings;
 import com.example.ipad.unix.model.Employee;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     int count;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        int version = 1;
-        Context context = getApplication();
 
         /**create or open database*/
-        final DataAccessProxy proxy = new DataAccessProxy(context, "unix.db", version);
+        final DataAccessProxy proxy = new DataAccessProxy(this, "unix.db", 1);
 
         /** get count*/
 //        count = proxy.getCount(Employee.class, "where name=?", new String[]{"Oliver"});
