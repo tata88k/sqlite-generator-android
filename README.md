@@ -23,6 +23,38 @@ This repository is a code genarator for Android . By using it, you can generate 
 * Set your own models package, api package ,table name format,and the target directory
 * Run the project, and you will see the whole generated codes in the target directory
 
+# API
+<h2>create or open database</h2>
+<p>
+DataAccessProxy proxy = new DataAccessProxy(context, "unix.db", version);
+<h2>get count</h2>
+<p>
+count = proxy.getCount(Employee.class, "where name=?", new String[]{"Oliver"});
+<p>
+or
+<p>
+count = proxy.getCount(Employee.class, null, null);
+<h2>query</h2>
+<p>
+List<Employee> list = proxy.query(Employee.class, "select * from " +  new Employee().getTableName() + " where departmentId=?", new String[]{"1"});
+<p>
+or
+<p>
+List<Employee> list = proxy.load(Employee.class, " where departmentId=?", new String[]{"1"});
+<p>
+or
+<p>
+List<Employee> list = proxy.load(Employee.class, null, null);
+<h2>update</h2>
+<p>
+proxy.update(employee);
+<h2>delete</h2>
+<p>
+proxy.delete(employee);
+<h2>add</h2>
+<p>
+proxy.insert(employee);
+
 PS: I design my sqlite database file on SQLiteStudio and generate code with SQLiteCodeGenerator-android
 
 # Limit
