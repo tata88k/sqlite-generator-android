@@ -9,16 +9,11 @@ import java.io.Writer;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * Created by UsherBaby on 2016/1/6.
  */
 public class Generator {
-
-//    private Pattern patternKeepIncludes;
-//    private Pattern patternKeepFields;
-//    private Pattern patternKeepMethods;
 
     private String modelPackage;
     private String apiPackage;
@@ -27,12 +22,9 @@ public class Generator {
     private TypeMap typeMap;
     private Configuration config;
     private CodeStyle tableNameCodeStyle;
-    private CodeStyle memberNameCodeStyle;
+    private CodeStyle columnNameCodeStyle;
 
     public Generator() {
-//        patternKeepIncludes = compilePattern("INCLUDES");
-//        patternKeepFields = compilePattern("FIELDS");
-//        patternKeepMethods = compilePattern("METHODS");
         typeMap = new TypeMap();
         try {
             config = new Configuration(Configuration.VERSION_2_3_23);
@@ -51,7 +43,7 @@ public class Generator {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Unix.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:" + targetDB);
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String getTableNameSql = "select name from sqlite_master where type='view'";
@@ -63,7 +55,7 @@ public class Generator {
                 ViewModel model = new ViewModel();
                 model.setJavaPackage(modelPackage);
                 model.setTableNameCodeStyle(tableNameCodeStyle);
-                model.setMemberNameCodeStyle(memberNameCodeStyle);
+                model.setMemberNameCodeStyle(columnNameCodeStyle);
                 model.setSuperModelClassName("SuperModel");
                 model.setTableName(tableName);
                 for (int i = 1; i <= meta.getColumnCount(); i++) {
@@ -78,13 +70,19 @@ public class Generator {
                         type = "String";
                     }
                     model.addType(type);
-                    model.addMember(name, type);
+                    if (columnNameCodeStyle == CodeStyle.Pascal) {
+                        model.addMember(StringHelper.pascal2Camle(name), type);
+                    } else if (columnNameCodeStyle == CodeStyle.Score) {
+                        model.addMember(StringHelper.score2Camle(name), type);
+                    } else {
+                        model.addMember(name, type);
+                    }
                     if (tableNameCodeStyle == CodeStyle.Camel) {
                         model.setClassName(StringHelper.camel2Pascal(tableName));
-                    } else if (tableNameCodeStyle == CodeStyle.Pascal) {
-                        model.setClassName(tableName);
-                    } else {
+                    } else if (tableNameCodeStyle == CodeStyle.Score) {
                         model.setClassName(StringHelper.score2Pascal(tableName));
+                    } else {
+                        model.setClassName(tableName);
                     }
                 }
 
@@ -128,7 +126,7 @@ public class Generator {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Unix.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:" + targetDB);
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String getTableNameSql = "select name from sqlite_master where type='table' and name!='sqlite_sequence'";
@@ -140,7 +138,7 @@ public class Generator {
                 Model model = new Model();
                 model.setJavaPackage(modelPackage);
                 model.setTableNameCodeStyle(tableNameCodeStyle);
-                model.setMemberNameCodeStyle(memberNameCodeStyle);
+                model.setMemberNameCodeStyle(columnNameCodeStyle);
                 model.setSuperModelClassName("SuperModel");
                 model.setTableName(tableName);
                 for (int i = 1; i <= meta.getColumnCount(); i++) {
@@ -155,16 +153,22 @@ public class Generator {
                         type = "String";
                     }
                     model.addType(type);
-                    model.addMember(name, type);
+                    if (columnNameCodeStyle == CodeStyle.Pascal) {
+                        model.addMember(StringHelper.pascal2Camle(name), type);
+                    } else if (columnNameCodeStyle == CodeStyle.Score) {
+                        model.addMember(StringHelper.score2Camle(name), type);
+                    } else {
+                        model.addMember(name, type);
+                    }
                     if (meta.isAutoIncrement(i)) {
                         model.addAutoIncrementMember(name);
                     }
                     if (tableNameCodeStyle == CodeStyle.Camel) {
                         model.setClassName(StringHelper.camel2Pascal(tableName));
-                    } else if (tableNameCodeStyle == CodeStyle.Pascal) {
-                        model.setClassName(tableName);
-                    } else {
+                    } else if (tableNameCodeStyle == CodeStyle.Score) {
                         model.setClassName(StringHelper.score2Pascal(tableName));
+                    } else {
+                        model.setClassName(tableName);
                     }
                 }
 
@@ -297,14 +301,14 @@ public class Generator {
         Map<String, Object> root = new HashMap();
         Api api = new Api();
         api.setJavaPackage(apiPackage);
-        api.setDbContextClassName("DbContext");
+        api.setDbContextClassName("DBContext");
         root.put("api", api);
         try {
             File file = package2File(getOutDir(), api.getJavaPackage(), api.getDbContextClassName());
             file.getParentFile().mkdirs();
             Writer writer = new FileWriter(file);
             try {
-                Template t = config.getTemplate("DbContext.ftl");
+                Template t = config.getTemplate("DBContext.ftl");
                 t.process(root, writer);
                 writer.flush();
                 System.out.println("Written " + file.getCanonicalPath());
@@ -355,18 +359,12 @@ public class Generator {
         return file;
     }
 
-    private Pattern compilePattern(String sectionName) {
-        int flags = Pattern.DOTALL | Pattern.MULTILINE;
-        return Pattern.compile(".*^\\s*?//\\s*?KEEP " + sectionName + ".*?\n(.*?)^\\s*// KEEP " + sectionName
-                + " END.*?\n", flags);
-    }
-
     public void setTableNameCodeStyle(CodeStyle tableNameCodeStyle) {
         this.tableNameCodeStyle = tableNameCodeStyle;
     }
 
-    public void setMemberNameCodeStyle(CodeStyle memberNameCodeStyle) {
-        this.memberNameCodeStyle = memberNameCodeStyle;
+    public void setColumnNameCodeStyle(CodeStyle columnNameCodeStyle) {
+        this.columnNameCodeStyle = columnNameCodeStyle;
     }
 
     public void setOutDir(String outDir) {

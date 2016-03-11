@@ -14,20 +14,22 @@ public class Main {
         final String modelPackage = "com.example.ipad.unix.model";
         //api package
         final String apiPackage = "com.example.ipad.unix.db";
+        //output dir
+        final String outDir = "./gen-src";
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Generator generator = new Generator();
-                generator.setOutDir("./gen-src");
+                generator.setOutDir(outDir);
                 generator.setTargetDB(targetDB);
                 generator.setModelPackage(modelPackage);
                 generator.setApiPackage(apiPackage);
 
                 //tables and views name format
                 generator.setTableNameCodeStyle(CodeStyle.Camel);
-
-                //generated java code style
-                generator.setMemberNameCodeStyle(CodeStyle.Camel);
+                //column name format
+                generator.setColumnNameCodeStyle(CodeStyle.Camel);
 
                 generator.generateSuperModel();
                 generator.generateViewModel();

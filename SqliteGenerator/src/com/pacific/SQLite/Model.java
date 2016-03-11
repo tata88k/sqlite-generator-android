@@ -222,8 +222,8 @@ public class Model {
         return hasDateType;
     }
 
-    public boolean hasIdPrimaryKey(){
-        return members.containsKey("id");
+    public boolean hasIdPrimaryKey() {
+        return members.containsKey("id") || members.containsKey("Id") || members.containsKey("ID") || members.containsKey("iD");
     }
 
     public String getSuperModelClassName() {
