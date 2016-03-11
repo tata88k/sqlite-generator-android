@@ -21,41 +21,28 @@ This repository is a code genarator for Android . By using it, you can generate 
 * Clone the whole project from github
 * Import the project into IntelliJ (Optionally, you can copy the sources to eclipse IDE)
 * Set your own models package, api package ,table name format,and the target directory
-* Run the project, and you will see the whole generated codes in the target directory
+* Run the project, and you will see the whole generated codes in the target directory  
+PS: I design my sqlite database file on SQLiteStudio and generate code with SQLiteCodeGenerator-android
 
 # API
-<h2>create or open database</h2>
-<p>
+<h3>create or open database</h3>
 DataAccessProxy proxy = new DataAccessProxy(context, "unix.db", version);
-<h2>get count</h2>
-<p>
-count = proxy.getCount(Employee.class, "where name=?", new String[]{"Oliver"});
-<p>
-or
-<p>
+<h3>get count</h3>
+count = proxy.getCount(Employee.class, "where name=?", new String[]{"Oliver"});  
+or  
 count = proxy.getCount(Employee.class, null, null);
-<h2>query</h2>
-<p>
-List<Employee> list = proxy.query(Employee.class, "select * from " +  new Employee().getTableName() + " where departmentId=?", new String[]{"1"});
-<p>
-or
-<p>
-List<Employee> list = proxy.load(Employee.class, " where departmentId=?", new String[]{"1"});
-<p>
-or
-<p>
+<h3>query</h3>
+List<Employee> list = proxy.query(Employee.class, "select * from " +  new Employee().getTableName() + " where departmentId=?", new String[]{"1"});  
+or  
+List<Employee> list = proxy.load(Employee.class, " where departmentId=?", new String[]{"1"});  
+or  
 List<Employee> list = proxy.load(Employee.class, null, null);
-<h2>update</h2>
-<p>
+<h3>update</h3>
 proxy.update(employee);
-<h2>delete</h2>
-<p>
+<h3>delete</h3>
 proxy.delete(employee);
-<h2>add</h2>
-<p>
+<h3>add</h3>
 proxy.insert(employee);
-
-PS: I design my sqlite database file on SQLiteStudio and generate code with SQLiteCodeGenerator-android
 
 # Limit
 * Currently , you must set a named "id" column as the table primary key.
