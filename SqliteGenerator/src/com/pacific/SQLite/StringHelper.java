@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by lizhanyi on 2016/1/5.
+ * Created by UsherBaby on 2016/1/6.
  */
 public class StringHelper {
 

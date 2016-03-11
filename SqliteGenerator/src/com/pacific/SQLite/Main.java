@@ -1,16 +1,19 @@
 package com.pacific.SQLite;
 
+/**
+ * Created by UsherBaby on 2016/1/6.
+ */
+
 public class Main {
 
     public static void main(String[] args) {
 
-        //target database
+        //target sqlite database file
         final String targetDB = "Unix.db";
         //model package
         final String modelPackage = "com.example.ipad.unix.model";
         //api package
         final String apiPackage = "com.example.ipad.unix.db";
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -19,6 +22,7 @@ public class Main {
                 generator.setTargetDB(targetDB);
                 generator.setModelPackage(modelPackage);
                 generator.setApiPackage(apiPackage);
+
                 //tables and views name format
                 generator.setTableNameCodeStyle(CodeStyle.Camel);
 

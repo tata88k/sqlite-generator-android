@@ -4,7 +4,7 @@ package com.pacific.SQLite;
 import java.util.HashMap;
 
 /**
- * Created by lizhanyi on 2016/1/2.
+ * Created by UsherBaby on 2016/1/6.
  */
 public class TypeMap {
 //    private HashMap<String, String> java2db;

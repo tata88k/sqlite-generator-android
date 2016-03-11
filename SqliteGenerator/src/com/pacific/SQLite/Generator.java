@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * Created by lizhanyi on 2016/1/2.
+ * Created by UsherBaby on 2016/1/6.
  */
 public class Generator {
 
@@ -51,7 +51,7 @@ public class Generator {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:" + targetDB);
+            connection = DriverManager.getConnection("jdbc:sqlite:Unix.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String getTableNameSql = "select name from sqlite_master where type='view'";
@@ -128,7 +128,7 @@ public class Generator {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:" + targetDB);
+            connection = DriverManager.getConnection("jdbc:sqlite:Unix.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String getTableNameSql = "select name from sqlite_master where type='table' and name!='sqlite_sequence'";

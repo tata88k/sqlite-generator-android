@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by lizhanyi on 2016/1/6.
+ * Created by UsherBaby on 2016/1/6.
  */
 public class Api {
     private String javaPackage;

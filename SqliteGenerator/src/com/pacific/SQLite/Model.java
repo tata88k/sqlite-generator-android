@@ -3,7 +3,7 @@ package com.pacific.SQLite;
 import java.util.*;
 
 /**
- * Created by lizhanyi on 2016/1/2.
+ * Created by UsherBaby on 2016/1/6.
  */
 public class Model {
 
