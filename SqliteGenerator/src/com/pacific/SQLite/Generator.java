@@ -97,7 +97,7 @@ public class Generator {
                         Template t = config.getTemplate("ViewModel.ftl");
                         t.process(root, writer);
                         writer.flush();
-                        System.out.println(model.getClassName() + ".java");
+                        System.out.println("Written " + file.getCanonicalPath());
                     } finally {
                         writer.close();
                     }
@@ -188,7 +188,7 @@ public class Generator {
                         Template t = config.getTemplate("Model.ftl");
                         t.process(root, writer);
                         writer.flush();
-                        System.out.println(model.getClassName() + ".java");
+                        System.out.println("Written " + file.getCanonicalPath());
                     } finally {
                         writer.close();
                     }

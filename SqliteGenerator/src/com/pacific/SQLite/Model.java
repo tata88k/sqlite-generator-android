@@ -119,7 +119,7 @@ public class Model {
             String key = entry.getKey();
             if (key.equals("id")) continue;
             if (memberNameCodeStyle == CodeStyle.Score) {
-                key = StringHelper.camel2score(key);
+                key = StringHelper.camel2Score(key);
             } else if (memberNameCodeStyle == CodeStyle.Pascal) {
                 key = StringHelper.camel2Pascal(key);
             } else {
@@ -143,7 +143,7 @@ public class Model {
             String key = entry.getKey();
             if (autoIncrementMembers.contains(key)) continue;
             if (memberNameCodeStyle == CodeStyle.Score) {
-                key = StringHelper.camel2score(key);
+                key = StringHelper.camel2Score(key);
             } else if (memberNameCodeStyle == CodeStyle.Pascal) {
                 key = StringHelper.camel2Pascal(key);
             } else {
@@ -212,7 +212,7 @@ public class Model {
         if (memberNameCodeStyle == CodeStyle.Pascal) {
             return StringHelper.camel2Pascal(name);
         } else if (memberNameCodeStyle == CodeStyle.Score) {
-            return StringHelper.camel2score(name);
+            return StringHelper.camel2Score(name);
         } else {
             return name;
         }

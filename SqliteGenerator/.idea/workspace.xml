@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a20dfc6-d452-40c9-8d4d-349fb5bbb13a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidExample/Unix/.idea/misc.xml" afterPath="$PROJECT_DIR$/../AndroidExample/Unix/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/pacific/SQLite/Generator.java" afterPath="$PROJECT_DIR$/src/com/pacific/SQLite/Generator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/pacific/SQLite/Model.java" afterPath="$PROJECT_DIR$/src/com/pacific/SQLite/Model.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/pacific/SQLite/StringHelper.java" afterPath="$PROJECT_DIR$/src/com/pacific/SQLite/StringHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/pacific/SQLite/ViewModel.java" afterPath="$PROJECT_DIR$/src/com/pacific/SQLite/ViewModel.java" />
     </list>
     <ignored path="SqliteGenerator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +26,20 @@
     <favorites_list name="SqliteGenerator" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Generator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/pacific/SQLite/Generator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.666667">
+              <caret line="99" column="81" selection-start-line="99" selection-start-column="81" selection-end-line="99" selection-end-column="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -86,9 +99,7 @@
         <option value="$PROJECT_DIR$/gen-src/com/example/api/DBOpenHelper.java" />
         <option value="$PROJECT_DIR$/gen-src/com/example/ipad/unix/DBOpenHelper.java" />
         <option value="$PROJECT_DIR$/gen-src/com/example/ipad/unix/User.java" />
-        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/ViewModel.java" />
         <option value="$PROJECT_DIR$/src/com/pacific/SQLite/Api.java" />
-        <option value="$PROJECT_DIR$/gen-src/com/example/ipad/unix/db/DBOpenHelper.java" />
         <option value="$PROJECT_DIR$/gen-src/com/example/ipad/unix/db/DataAccessProxy.java" />
         <option value="$PROJECT_DIR$/src-template/SuperModel.ftl" />
         <option value="$PROJECT_DIR$/src-template/ViewModel.ftl" />
@@ -96,11 +107,13 @@
         <option value="$PROJECT_DIR$/src-template/DBContext.ftl" />
         <option value="$PROJECT_DIR$/src-template/Model.ftl" />
         <option value="$PROJECT_DIR$/src-template/DBOpenHelper.ftl" />
-        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/Model.java" />
         <option value="$PROJECT_DIR$/gen-src/com/example/ipad/unix/model/CompanyUser.java" />
-        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/Generator.java" />
-        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/StringHelper.java" />
         <option value="$PROJECT_DIR$/src/com/pacific/SQLite/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/Model.java" />
+        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/ViewModel.java" />
+        <option value="$PROJECT_DIR$/gen-src/com/example/ipad/unix/db/DBOpenHelper.java" />
+        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/StringHelper.java" />
+        <option value="$PROJECT_DIR$/src/com/pacific/SQLite/Generator.java" />
       </list>
     </option>
   </component>
@@ -112,9 +125,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="457" />
-    <option name="width" value="1660" />
-    <option name="height" value="774" />
+    <option name="y" value="27" />
+    <option name="width" value="1680" />
+    <option name="height" value="1023" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -569,20 +582,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="457" width="1660" height="774" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="27" width="1680" height="1023" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27631578" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2752193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19517544" sideWeight="0.29940477" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26847664" sideWeight="0.70059526" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47368422" sideWeight="0.70059526" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20903614" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20654762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -735,14 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pacific/SQLite/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.59375">
-          <caret line="208" column="5" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/production/SqliteGenerator/com/pacific/SQLite/CodeStyle.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -835,10 +840,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pacific/SQLite/ViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4630682">
+          <caret line="141" column="38" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pacific/SQLite/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.518466">
+          <caret line="217" column="8" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pacific/SQLite/StringHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <caret line="65" column="42" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -847,19 +868,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pacific/SQLite/Generator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="158" column="63" selection-start-line="158" selection-start-column="63" selection-end-line="158" selection-end-column="63" />
+        <state vertical-scroll-proportion="-11.666667">
+          <caret line="99" column="81" selection-start-line="99" selection-start-column="81" selection-end-line="99" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pacific/SQLite/ViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1619318">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>

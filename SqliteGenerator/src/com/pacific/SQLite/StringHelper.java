@@ -41,11 +41,11 @@ public class StringHelper {
         return stringBuffer.toString();
     }
 
-    public static String camel2score(String source) {
-        return pascal2score(source);
+    public static String camel2Score(String source) {
+        return pascal2Score(source);
     }
 
-    public static String pascal2score(String source) {
+    public static String pascal2Score(String source) {
         String regexStr = "[A-Z]";
         Matcher matcher = Pattern.compile(regexStr).matcher(source);
         StringBuffer stringBuffer = new StringBuffer();
@@ -62,9 +62,13 @@ public class StringHelper {
 
     //called in ftl template
     public static String toIFExists(String source) {
-        if(source.contains("CREATE VIEW")){
+        String upperCaseSource = source.toUpperCase();
+        if (source.contains("CREATE VIEW") && !upperCaseSource.contains("CREATE VIEW IF NOT EXISTS")) {
             return source.replaceFirst("CREATE VIEW", "CREATE VIEW IF NOT EXISTS");
         }
-        return source.replaceFirst("CREATE TABLE", "CREATE TABLE IF NOT EXISTS");
+        if (!upperCaseSource.contains("CREATE TABLE IF NOT EXISTS")) {
+            return source.replaceFirst("CREATE TABLE", "CREATE TABLE IF NOT EXISTS");
+        }
+        return source;
     }
 }

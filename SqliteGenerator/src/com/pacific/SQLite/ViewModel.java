@@ -139,7 +139,7 @@ public class ViewModel {
         if (memberNameCodeStyle == CodeStyle.Pascal) {
             return StringHelper.camel2Pascal(name);
         } else if (memberNameCodeStyle == CodeStyle.Score) {
-            return StringHelper.camel2score(name);
+            return StringHelper.camel2Score(name);
         } else {
             return name;
         }
