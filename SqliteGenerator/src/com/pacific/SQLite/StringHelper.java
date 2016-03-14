@@ -25,11 +25,11 @@ public class StringHelper {
     }
 
 
-    public static String pascal2Camle(String source) {
+    public static String pascal2Camel(String source) {
         return source.replaceFirst(source.substring(0, 1), source.substring(0, 1).toLowerCase());
     }
 
-    public static String score2Camle(String source) {
+    public static String score2Camel(String source) {
         Pattern pattern = Pattern.compile("_[a-z]");
         Matcher matcher = pattern.matcher(source);
         StringBuffer stringBuffer = new StringBuffer();
@@ -60,6 +60,7 @@ public class StringHelper {
         return stringBuffer.toString();
     }
 
+    //called in ftl template
     public static String toIFExists(String source) {
         if(source.contains("CREATE VIEW")){
             return source.replaceFirst("CREATE VIEW", "CREATE VIEW IF NOT EXISTS");

@@ -71,9 +71,9 @@ public class Generator {
                     }
                     model.addType(type);
                     if (columnNameCodeStyle == CodeStyle.Pascal) {
-                        model.addMember(StringHelper.pascal2Camle(name), type);
+                        model.addMember(StringHelper.pascal2Camel(name), type);
                     } else if (columnNameCodeStyle == CodeStyle.Score) {
-                        model.addMember(StringHelper.score2Camle(name), type);
+                        model.addMember(StringHelper.score2Camel(name), type);
                     } else {
                         model.addMember(name, type);
                     }
@@ -154,9 +154,9 @@ public class Generator {
                     }
                     model.addType(type);
                     if (columnNameCodeStyle == CodeStyle.Pascal) {
-                        model.addMember(StringHelper.pascal2Camle(name), type);
+                        model.addMember(StringHelper.pascal2Camel(name), type);
                     } else if (columnNameCodeStyle == CodeStyle.Score) {
-                        model.addMember(StringHelper.score2Camle(name), type);
+                        model.addMember(StringHelper.score2Camel(name), type);
                     } else {
                         model.addMember(name, type);
                     }
