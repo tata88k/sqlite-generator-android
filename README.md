@@ -1,5 +1,6 @@
 # SQLite Generator
 A powerful sqlite code generator from sqlite database file for android .
+<p>[中文教程](http://www.jianshu.com/p/1872009db0ce)
 <p>
 ![](https://github.com/ThePacific/SQLiteCodeGenerator-android/blob/master/gif/guide.gif)
 <p>
