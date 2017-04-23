@@ -27,10 +27,10 @@ This repository is a code genarator for Android . By using it, you can generate 
 PS: I design my sqlite database file on SQLiteStudio and generate code with this Generator
 
 # API
-<p>
-![](https://github.com/ThePacific/SQLiteCodeGenerator-android/blob/master/gif/api_0.png)
-<p>
-![](https://github.com/ThePacific/SQLiteCodeGenerator-android/blob/master/gif/api_1.png)
+
+![](https://github.com/thepacific/SQLiteCodeGenerator-android/blob/master/gif/api_0.png)
+
+![](https://github.com/thepacific/SQLiteCodeGenerator-android/blob/master/gif/api_1.png)
 
 # Limit
 * Currently , you must set a named "id" column as the table primary key.
