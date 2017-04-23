@@ -1,9 +1,9 @@
 # SQLite Generator
 A powerful sqlite code generator from sqlite database file for android .[中文教程](http://www.jianshu.com/p/1872009db0ce)
 
-![](https://github.com/thepacific/sqlite-generator-android/tree/master/gif/guide.gif)
+![](https://github.com/thepacific/sqlite-generator-android/blob/master/gif/guide.gif)
 
-![](https://github.com/thepacific/sqlite-generator-android/tree/master/gif/android.gif)
+![](https://github.com/thepacific/sqlite-generator-android/blob/master/gif/android.gif)
 
 # Introduce
 This repository is a code genarator for Android . By using it, you can generate java codes to read/write sqlite
